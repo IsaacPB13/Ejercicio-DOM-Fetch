@@ -2,7 +2,7 @@
 
 const API_URL = "https://fakestoreapi.com/products";
 
-const mostrarProductos = document.getElementId("btn-mostrar");
+const mostrarProductos = document.getElementById("btn-mostrar");
 
 const filaProds = document.getElementById("prodRow");
 
@@ -24,21 +24,21 @@ async function getProductos() {
 }
 
 //Definiendo la acción del botón
-mostrarProductos.addEventListener("click", ()=>{
-    const productos = getProductos();
-    productos.forEach(producto => {
+mostrarProductos.addEventListener("click", async ()=>{
+    const productos = await getProductos();
+    for(let i=0; i<productos.length; i++){
         const card=`
         <div class="card" style="width: 18rem;">
-            <img src="${producto.image}" class="card-img-top">
+            <img src="${productos[i].image}" class="card-img-top">
             <div class="card-body">
-                <h5 class="card-title">${producto.title}</h5>
+                <h5 class="card-title">${productos[i].title}</h5>
                 <p class="card-text">
-                    Categoria: ${producto.category}
-                    Precio: $ ${producto.price}
+                    Categoria: ${productos[i].category}
+                    Precio: $ ${productos[i].price}
                 </p>
             </div>
         </div>
         `
         filaProds.insertAdjacentHTML("beforeend", card);
-    });
+    }
 });
