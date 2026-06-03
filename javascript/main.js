@@ -34,6 +34,7 @@ mostrarProductos.addEventListener("click", async ()=>{
                 <h5 class="card-title">${productos[i].title}</h5>
                 <p class="card-text">
                     Categoria: ${productos[i].category}
+                    <br>
                     Precio: $ ${productos[i].price}
                 </p>
             </div>
